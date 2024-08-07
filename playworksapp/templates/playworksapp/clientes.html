@@ -1,0 +1,11 @@
+{% extends "playworksapp/index.html" %}
+{% load static %}
+
+{% block main %}
+
+    {% for cliente in clientes %}
+        <p style="color: brown;">El cliente es: {{cliente.nombre}}</p>
+    {% endfor %}
+
+
+{% endblock main %}

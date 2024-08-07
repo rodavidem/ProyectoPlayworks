@@ -1,0 +1,30 @@
+{% extends "playworksapp/index.html" %}
+{% load static %}
+
+{% block main %}
+    <h2>Buscar Clientes</h2>
+    <form method="GET">
+        <input type="text" name="nombre" placeholder="Buscar por nombre" value="{{ nombre }}">
+        <input type="submit" value="Buscar">
+    </form>
+
+    {% if nombre %}
+        <h2>Resultados de la búsqueda</h2>
+        <p>Resultados para: "{{ nombre }}"</p>
+        {% if resultados %}
+            <ul>
+                {% for cliente in resultados %}
+                    <li>
+                        <strong>Nombre:</strong> {{ cliente.nombre }} {{ cliente.apellido }}<br>
+                        <strong>Email:</strong> {{ cliente.email }}<br>
+                        <strong>Teléfono:</strong> {{ cliente.telefono }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No se encontraron resultados.</p>
+        {% endif %}
+    {% else %}
+        <p>No se ingresó un nombre para buscar.</p>
+    {% endif %}
+{% endblock main %}
